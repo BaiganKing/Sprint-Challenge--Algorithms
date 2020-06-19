@@ -23,16 +23,6 @@ class SortingRobot:
         """
         return self._position > 0
 
-	def swap_item(self):
-        """
-        The robot swaps its currently held item with the list item in front
-        of it.
-        This will increment the time counter by 1.
-        """
-        self._time += 1
-        # Swap the held item with the list item at the robot's position
-        self._item, self._list[self._position] = self._list[self._position], self._item
-
     def move_right(self):
         """
         If the robot can move to the right, it moves to the right and
@@ -106,8 +96,43 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        self.swap_item()
+        for max_reps in range(len(self._list)//2):
+            for num in range(len(self._list)):
+                if self.can_move_right() == True:
+                    self.move_right()
+                    if self.compare_item() ==1:
+                        pass
+                    elif self.compare_item() ==0:
+                        pass
+                    else:
+                        self.swap_item()
+                else:
+                    if self.compare_item() == -1:
+                        pass
+                    elif self.compare_item() == 0:
+                        pass
+                    else: self.swap_item()
+            for num in range(len(self._list)):
+                if self.can_move_left() == True:
+                    self.move_left()
+                    if self.compare_item() == -1:
+                        pass
+                    elif self.compare_item() ==0:
+                        pass
+                    else:
+                        self.swap_item()
+                else:
+                    if self.compare_item() ==1:
+                        pass
+                    elif self.compare_item() ==0:
+                        pass
+                    elif self.compare_item == None:
+                        self.swap_item()
+                    else:
+                        self.swap_item()
+        if self._item != None:
+            self.swap_item()
 
 
 if __name__ == "__main__":
