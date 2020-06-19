@@ -23,6 +23,16 @@ class SortingRobot:
         """
         return self._position > 0
 
+	def swap_item(self):
+        """
+        The robot swaps its currently held item with the list item in front
+        of it.
+        This will increment the time counter by 1.
+        """
+        self._time += 1
+        # Swap the held item with the list item at the robot's position
+        self._item, self._list[self._position] = self._list[self._position], self._item
+
     def move_right(self):
         """
         If the robot can move to the right, it moves to the right and
