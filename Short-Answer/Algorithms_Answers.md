@@ -22,9 +22,9 @@ The recursive function returns once per n, so I believe this one is also O(n)
 
 ## Exercise II
 
-For this, we'd drop the egg at the middle story of the building If the egg DOESN'T break at that height, we go half way from the middle to the top floor and drop
+We'd drop the egg at the middle story of the building If the egg doesn't break at that height, we go half-way from the middle to the top floor and drop.
 
-If the egg DOES break at that height, we go half way from the middle to the bottom floor and drop
+If the egg does break at that height, we go half way from the middle to the bottom floor and drop
 
 We keep doing this, cutting the number of floors to check in half until we divide the floors up so there's only one possible answer.
 
