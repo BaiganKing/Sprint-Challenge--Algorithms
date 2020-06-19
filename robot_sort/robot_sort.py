@@ -96,44 +96,38 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        self.swap_item()
-        for max_reps in range(len(self._list)//2):
-            for num in range(len(self._list)):
-                if self.can_move_right() == True:
-                    self.move_right()
-                    if self.compare_item() ==1:
-                        pass
-                    elif self.compare_item() ==0:
-                        pass
-                    else:
-                        self.swap_item()
-                else:
-                    if self.compare_item() == -1:
-                        pass
-                    elif self.compare_item() == 0:
-                        pass
-                    else: self.swap_item()
-            for num in range(len(self._list)):
-                if self.can_move_left() == True:
-                    self.move_left()
-                    if self.compare_item() == -1:
-                        pass
-                    elif self.compare_item() ==0:
-                        pass
-                    else:
-                        self.swap_item()
-                else:
-                    if self.compare_item() ==1:
-                        pass
-                    elif self.compare_item() ==0:
-                        pass
-                    elif self.compare_item == None:
-                        self.swap_item()
-                    else:
-                        self.swap_item()
-        if self._item != None:
-            self.swap_item()
+        self.set_light_on()
 
+        while self.light_is_on() == True:
+            #reset light to off
+            self.set_light_off()
+
+            while self.can_move_right():
+                # pick up an item and move to the right
+                self.swap_item()
+                self.move_right()
+                # compare to the next item and if my item is bigger, swap and turn light on
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.set_light_on()
+                # move to the left once and drop the item on the previous spot
+                self.move_left()
+                self.swap_item()
+                # move one to the right
+                self.move_right()
+
+            #redo from the right
+            while self.can_move_left():
+                self.swap_item()
+                self.move_left()
+                # compare to the item on the left and if my item is smaller, swap the item
+                if self.compare_item() == -1:
+                    self.swap_item()
+                    self.set_light_on()
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+        return self._list
 
 if __name__ == "__main__":
     # Test our your implementation from the command line

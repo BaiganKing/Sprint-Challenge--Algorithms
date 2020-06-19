@@ -9,9 +9,9 @@ Starting from inner, you do that inner operation once per n The while operation 
 Those are three constants, which we drop, so I think it's O(n) is correct
 
 
-b)O(n)
+b)O(n log n)
 
-Starting from the inner j * = 2 sum += 1 Those are each 1, even with the multiple, it isn't doing anything to n The while loop just checks the condition once The j=1 is one sum = 0 is one for i in range(n) does the operations once per n, so n^2
+Because J is multiplied by 2 each time you are basically going to ever run half of n meaning the while loop is logarithmic and the while loop will be repeated N times by the for loop
 
 
 c)O(n)
