@@ -13,7 +13,7 @@ def count_th(word):
     # They they can't be 'th'
     if len(word) < 2:
         return 0
-    # If they are 'th' add 1 to the count, like the bunny example
+    # If they are 'th' add 1 to the count
     if word[0:2] == 'th':
         # then use recursion on the whole word, but one index forward
         return 1 + count_th(word[1:])
